@@ -1,6 +1,6 @@
 {
   "name": "nodejs-resemble",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Image analysis and comparison for nodejs",
   "main": "resemble.js",
   "scripts": {
