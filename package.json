@@ -1,5 +1,5 @@
 {
-  "name": "node-resemble-js",
+  "name": "nodejs-resemble",
   "version": "0.2.0",
   "description": "Image analysis and comparison for nodejs",
   "main": "resemble.js",
