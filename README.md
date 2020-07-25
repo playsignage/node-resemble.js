@@ -7,7 +7,7 @@ It is a modification of [Resemble.js](https://github.com/Huddle/Resemble.js)
 
 ### Get it
 
-`npm install node-resemble-js`
+`npm install nodejs-resemble`
 
 ### Example
 
@@ -106,3 +106,4 @@ resemble.outputSettings({
 Credits:
  * Created by [James Cryer](http://github.com/jamescryer) and the Huddle development team.
  * [Lukas Svoboda](http://github.com/lksv) - modification for node.js
+ * [Kemal Erdem](https://github.com/burnpiro) - modification
