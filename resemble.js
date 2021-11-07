@@ -7,6 +7,7 @@ URL: https://github.com/Huddle/Resemble.js
 var PNG = require('pngjs').PNG;
 var fs = require('fs');
 var jpeg = require('jpeg-js');
+var sharp = require('sharp');
 
 //keeping wrong indentation and '_this' for better diff with origin resemble.js
 var _this = {};
@@ -113,30 +114,17 @@ var _this = {};
 			triggerDataUpdate();
 		}
 
-		function loadImageData( fileData, callback ){
-
-			if (Buffer.isBuffer(fileData)) {
+	function loadImageData( fileData, callback ){
+		sharp(fileData)
+			.png()
+			.toBuffer()
+			.then(pngData => {
 				var png = new PNG();
-				png.parse(fileData, function (err, data) {
-				  callback(data, data.width, data.height);
+				png.parse(pngData, function (err, data) {
+					callback(data, data.width, data.height);
 				});
-			} else {
-				var ext = fileData.substring(fileData.lastIndexOf(".")+1);
-				if(ext=="png") {
-					var png = new PNG();
-					fs.createReadStream(fileData)
-					  .pipe(png)
-					  .on('parsed', function() {
-						callback(this, this.width, this.height);
-					  });
-				}
-				if(ext=="jpg" || ext=="jpeg") {
-					var jpegData = fs.readFileSync(fileData);
-					fileData = jpeg.decode(jpegData, true);
-					callback(fileData, fileData.width, fileData.height);
-				}
-			};
-		}
+			})
+	}
 
 		function isColorSimilar(a, b, color){
 
