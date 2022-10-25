@@ -117,6 +117,7 @@ var _this = {};
 	function loadImageData( fileData, callback ){
 		sharp(fileData)
 			.png()
+      .resize(960, 540)
 			.toBuffer()
 			.then(pngData => {
 				var png = new PNG();
