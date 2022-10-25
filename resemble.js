@@ -176,25 +176,12 @@ var _this = {};
 		}
 
 		function isRGBSimilar(d1, d2){
-      // Due to OSX seemingly having different colors than Android/linux, some comparisons fail because yellow is more yellow and so forth,
-      // whereas other colors are matching. Instead of increasing the tolerance for all colors, we instead compare the cumulative tolerance
-      // for a pixel, this way one certain color can vary more, as long as the total sum of the colors does not drift off more than 70
-      var cumulativeTolerance = 70;
-      var red = Math.abs(d1.r - d2.r);
-      var green = Math.abs(d1.g - d2.g);
-      var blue = Math.abs(d1.b - d2.b);
-      var alpha = 0;
-      if(d1.a && d2.a){
-        alpha = Math.abs(d1.a - d2.a);
-      }
-      var sum = red + green + blue + alpha
-      return sum < cumulativeTolerance;
-			//var red = isColorSimilar(d1.r,d2.r,'red');
-			//var green = isColorSimilar(d1.g,d2.g,'green');
-			//var blue = isColorSimilar(d1.b,d2.b,'blue');
-			//var alpha = isColorSimilar(d1.a, d2.a, 'alpha');
+			var red = isColorSimilar(d1.r,d2.r,'red');
+			var green = isColorSimilar(d1.g,d2.g,'green');
+			var blue = isColorSimilar(d1.b,d2.b,'blue');
+			var alpha = isColorSimilar(d1.a, d2.a, 'alpha');
 
-			//return red && green && blue && alpha;
+			return red && green && blue && alpha;
 		}
 
 		function isContrasting(d1, d2){
